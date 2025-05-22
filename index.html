@@ -1,0 +1,84 @@
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+
+    body {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(to right, yellow, orange, hotpink);
+    }
+
+    div {
+        width: 400px;
+        height: fit-content;
+        text-align: center;
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+    h1 {
+        color: skyblue;
+    }
+
+    p {
+        margin-top: 10px;
+    }
+
+    button {
+        background-color: rgb(235, 22, 103);
+        padding-top: 5px;
+        padding-bottom: 5px;
+        padding-left: 10px;
+        padding-right: 10px;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        margin-top: 20px;
+
+    }
+</style>
+
+
+
+<div id="col">
+    <h1>BMI Calculator</h1>
+    <p>click the button below to calculate your BMI</p>
+    <button onclick="bmi()" id="btn">cal BMI</button>
+    <p id="result"></p>
+</div>
+
+
+<script>
+    function bmi() {
+        var result = document.getElementById("result")
+        var weight = prompt("enter yor weight in kg")
+        var height = prompt("enter your height in m")
+
+        var w = parseFloat(weight)
+        var hcm = parseFloat(height)
+        var h = hcm / 100
+        var val = weight / (h ** 2)
+        var valf = val.toFixed(1)
+        result.innerHTML = `your BMI is: ${valf}`
+        var div = document.getElementById("col")
+        if (valf < 18.5) {
+            div.style.backgroundColor = "red"
+        }
+        else if (valf >= 18.5 && valf <= 24.9) {
+            div.style.backgroundColor = "green"
+        }
+        else if (valf >= 25.0 && valf <= 29.9) {
+            div.style.backgroundColor = "orange"
+        }
+        else {
+            div.style.backgroundColor = "black"
+            div.style.color = "white"
+        }
+    }
+</script>
